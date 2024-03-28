@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn-blue {
+    @apply bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 transition duration-300 ease-in-out transform hover:-translate-y-1;
+}
+
+/* Add some additional styling for buttons */
+#daily-btn, #weekly-btn {
+    transition: background-color 0.3s ease;
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+/* Style the table to be more appealing */
+.forecast-table {
+    border-collapse: collapse;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 600px; /* You can set a max-width for better appearance */
+    margin: auto; /* Center the table on the page */
+}
+
+.forecast-table th, .forecast-table td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+.forecast-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.forecast-table th {
+    background-color: #007bff;
+    color: white;
+}
+/* Add to your style tag */
+#loading-indicator {
+    display: none; /* hide by default */
+    text-align: center;
+    padding: 10px;
+    font-size: 1.5em;
+}
+
+.forecast-table {
+    @apply divide-y divide-gray-300;
+  }
+  
+  .forecast-table th {
+    @apply bg-blue-500 text-white p-4 text-left;
+  }
+  
+  .forecast-table td {
+    @apply text-gray-700 p-4;
+  }
+
+  #weatherChart {
+    padding: 15px;
+    background-color: #f8fafc; /* Light background for the chart */
+    border-radius: 8px;
+  }
+  #weatherChartContainer {
+    width: 100%; /* Use a percentage to be responsive */
+    height: auto; /* Setting auto should maintain aspect ratio */
+    padding-top: 20px; /* Spacing from the text to chart */
+    height: 500px;
+    max-width: 1280px;
+}
+.weather-info {
+  max-width: 1000px; /* Or whatever max width you prefer */
+  margin: auto;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+  .weather-info img {
+    margin-right: 10px;
+  }
+  .weather-info div {
+    margin-right: 20px;
+  }
+  .active-forecast {
+    display: block;
+}
+#daily-forecast {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  background-color: white;
+}
+
