@@ -25,6 +25,9 @@ import {
     LineController
   );
 
+// axios.defaults.headers.common['X-CSRF-TOKEN'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+
 const data = {
     labels: ['6 AM', '9 AM', '12 PM', '3 PM', '6 PM', '9 PM'], // Replace with actual hourly data points
     datasets: [{
@@ -105,6 +108,7 @@ const options = {
   };
 
 document.addEventListener('DOMContentLoaded', function() {
+    const cityName = document.getElementById('city').value;
 
     function showLoadingIndicator(show) {
         const loadingIndicator = document.getElementById('loading-indicator');
@@ -150,7 +154,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Assuming '/api/weather/daily' is your endpoint for the daily weather data
-        fetch('/api/weather/daily')
+        
+        const url = `/api/weather/daily?city=${encodeURIComponent(cityName)}`;
+
+        fetch(url)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -173,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('lat-long').textContent = latLongText;
 
             const hourlyData = data.forecast.forecastday[0].hour;
-            console.log(hourlyData);
+            // console.log(hourlyData);
 
             const fourHourlyData = hourlyData.filter((hour, index) => index % 4 === 0);
             const chartLabels = fourHourlyData.map(hour => hour.time.substring(11));
@@ -285,7 +292,9 @@ document.addEventListener('DOMContentLoaded', function() {
         weeklyForecast.classList.add('active-forecast');
         dailyForecast.classList.remove('active-forecast');
         showLoadingIndicator(true);
-        fetch('/api/weather/weekly')
+        const url_weekly = `/api/weather/weekly?city=${encodeURIComponent(cityName)}`;
+
+        fetch(url_weekly)
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -347,3 +356,123 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('rain-popup').classList.add('hidden');
     });
 });
+
+// setInterval(function() {
+//   axios.get('/weather-alert')
+//       .then(function(response) {
+//           const alert = response.data;
+//           if (alert && alert.alert === 'High temperature') {
+//               alert(`Temperature is extreme in ${alert.city}!`);
+//               // You can replace the above alert with a call to display a popup
+//           }
+//       })
+//       .catch(function(error) {
+//           console.log(error);
+//       });
+// }, 5000); // Poll every 30 seconds
+
+
+// document.addEventListener('DOMContentLoaded', function() {
+//     const closeButton = document.querySelector('.close-button');
+//     closeButton.addEventListener('click', closeModal);
+
+//     window.addEventListener('click', function(event) {
+//         const modal = document.getElementById('alertModal');
+//         if (event.target === modal) {
+//             closeModal();
+//         }
+//     });
+// });
+
+// setInterval(function() {
+//     axios.get('/weather-alert')
+//         .then(function(response) {
+//             const alert = response.data;
+//             if (alert && alert.alert === 'High temperature') {
+//                 if (!sessionStorage.getItem('alertShown')) {
+//                     document.getElementById('alertMessage').textContent = `Temperature is extreme in ${alert.city}!`;
+//                     document.getElementById('alertModal').classList.remove('hidden');
+//                     sessionStorage.setItem('alertShown', 'true'); // Ensure the alert is shown only once per session
+//                 }
+//             }
+//         })
+//         .catch(function(error) {
+//             console.log(error);
+//         });
+// }, 5000); // Poll every 5 seconds
+
+function closeModal() {
+    const modal = document.getElementById('alertModal');
+    modal.classList.add('hidden');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const closeButton = document.querySelector('.close-button');
+    closeButton.addEventListener('click', function() {
+        const modal = document.getElementById('alertModal');
+        modal.classList.add('hidden');
+    });
+
+    window.addEventListener('click', function(event) {
+        const modal = document.getElementById('alertModal');
+        if (event.target === modal) {
+            
+                const modal = document.getElementById('alertModal');
+                modal.classList.add('hidden');
+            
+        }
+    });
+});
+
+setInterval(function() {
+    axios.get('/weather-alert')
+        .then(function(response) {
+            const alert = response.data;
+            if (alert && alert.alert === 'high') {
+                const message = `Temperature is extreme in ${alert.city}!`;
+                document.getElementById('alertMessage').textContent = message;
+                document.getElementById('alertModal').classList.remove('hidden');
+                markAlertAsShown();
+            } else if (alert && alert.alert === 'OK') {
+                const message = `Temperature is OK in ${alert.city}.`;
+                document.getElementById('alertMessage').textContent = message;
+                document.getElementById('alertModal').classList.remove('hidden');
+                markAlertAsShown();
+            }
+        })
+        .catch(function(error) {
+            console.log(error);
+        });
+}, 5000); // Poll every 5 seconds
+
+function markAlertAsShown() {
+    axios.post('/mark-alert-shown')
+        .then(function(response) {
+            console.log('Alert marked as shown:', response);
+        })
+        .catch(function(error) {
+            console.log('Error marking alert as shown:', error);
+        });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const closeButton = document.querySelector('.close-button'); // This selects the '×' button
+    // const closeModalButton = document.querySelector('.close-modal-button'); // This selects the 'Close' button
+
+    const modal = document.getElementById('alertModal');
+    
+    closeButton.addEventListener('click', function() {
+        modal.classList.add('hidden');
+    });
+
+    window.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            modal.classList.add('hidden');
+        }
+    });
+    closeButton.addEventListener('click', function(event) {
+        console.log('Close button clicked');
+        modal.classList.add('hidden');
+    });
+});
+

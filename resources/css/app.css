@@ -6,39 +6,14 @@
     @apply bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-opacity-50 transition duration-300 ease-in-out transform hover:-translate-y-1;
 }
 
-/* Add some additional styling for buttons */
 #daily-btn, #weekly-btn {
     transition: background-color 0.3s ease;
     font-weight: 600;
     margin-right: 10px;
 }
 
-/* Style the table to be more appealing */
-.forecast-table {
-    border-collapse: collapse;
-    margin-top: 20px;
-    width: 100%;
-    max-width: 600px; /* You can set a max-width for better appearance */
-    margin: auto; /* Center the table on the page */
-}
-
-.forecast-table th, .forecast-table td {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-
-.forecast-table tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-.forecast-table th {
-    background-color: #007bff;
-    color: white;
-}
-/* Add to your style tag */
 #loading-indicator {
-    display: none; /* hide by default */
+    display: none; 
     text-align: center;
     padding: 10px;
     font-size: 1.5em;
@@ -58,18 +33,18 @@
 
   #weatherChart {
     padding: 15px;
-    background-color: #f8fafc; /* Light background for the chart */
+    background-color: #f8fafc;
     border-radius: 8px;
   }
   #weatherChartContainer {
-    width: 100%; /* Use a percentage to be responsive */
-    height: auto; /* Setting auto should maintain aspect ratio */
-    padding-top: 20px; /* Spacing from the text to chart */
+    width: 100%;
+    height: auto;
+    padding-top: 20px; 
     height: 500px;
     max-width: 1280px;
 }
 .weather-info {
-  max-width: 1000px; /* Or whatever max width you prefer */
+  max-width: 1200px;
   margin: auto;
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -95,3 +70,214 @@
   background-color: white;
 }
 
+body, h1, h2, h3, p {
+  font-family: 'Nunito', sans-serif;
+}
+
+nav {
+  background: #007bff;
+  color: white;
+}
+
+nav a:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.weather-card {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.weather-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.table-forecast {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+.table-forecast th {
+  background-color: #007bff;
+  color: white;
+  padding: 15px;
+}
+
+.table-forecast td {
+  padding: 15px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.table-forecast tr:nth-child(even) {
+  background-color: #f8f8f8;
+}
+
+.button-primary {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button-primary:hover {
+  background-color: #0056b3;
+}
+
+footer {
+  background: #f1f1f1;
+  color: #333;
+  padding: 20px;
+  text-align: center;
+}
+
+
+@media (max-width: 768px) {
+  .weather-info {
+      flex-direction: column;
+  }
+}
+
+.forecast-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 1200px;
+}
+
+
+.forecast-table th {
+  background-color: #007bff;
+  color: white;
+  padding: 12px 15px;
+  text-align: center;
+  border-bottom: 2px solid #ffffff;
+}
+
+
+.forecast-table td {
+  padding: 12px 15px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+
+.forecast-table tr {
+  border-bottom: 1px solid #eaeaea;
+}
+
+
+.forecast-table tr:last-child {
+  border-bottom: none;
+}
+
+
+.forecast-table th:nth-child(1),
+.forecast-table td:nth-child(1) {
+  width: 15%; 
+}
+
+.forecast-table th:nth-child(2),
+.forecast-table td:nth-child(2) {
+  width: 25%; 
+}
+
+.forecast-table th:nth-child(3),
+.forecast-table td:nth-child(3) {
+  width: 20%; 
+}
+
+.forecast-table th:nth-child(4),
+.forecast-table td:nth-child(4) {
+  width: 20%; 
+}
+
+.forecast-table th:nth-child(5),
+.forecast-table td:nth-child(5) {
+  width: 20%; 
+}
+
+
+@media (max-width: 768px) {
+  .forecast-table {
+      width: 100%; 
+  }
+
+  
+  .forecast-table th:nth-child(3),
+  .forecast-table td:nth-child(3),
+  .forecast-table th:nth-child(5),
+  .forecast-table td:nth-child(5) {
+      display: none; 
+  }
+}
+nav {
+  background-color: #ffffff; 
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+}
+
+nav a {
+  padding: 10px 15px;
+  text-decoration: none; 
+  transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+nav a:hover, nav a:focus {
+  /* color: #0056b3;  */
+  background-color: #f8f9fa; 
+}
+
+
+nav a.active {
+  /* color: #0056b3; */
+  background-color: #e3f2fd; 
+  border-bottom: 3px solid #007bff; 
+}
+.forecast-table th, .forecast-table td {
+  text-align: left; 
+}
+
+.forecast-table th:nth-child(2), .forecast-table td:nth-child(2) {
+  text-align: center; 
+}
+
+.forecast-table {
+  border-radius: 8px;
+  overflow: hidden; 
+}
+
+
+.forecast-table tr:nth-child(odd) {
+  background-color: #f8f9fa; 
+}
+
+
+button {
+  background-color: #007bff; 
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3; 
+}
+
+
+footer {
+  background-color: #f8f9fa; 
+  border-top: 1px solid #eaeaea; 
+}

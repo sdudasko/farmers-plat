@@ -18,6 +18,10 @@ use App\Http\Controllers\WeatherController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-// For an API
+
+Route::get('/weather/getTemperature', [WeatherController::class, 'getTemperature']);
+Route::get('/weather/getHumidity', [WeatherController::class, 'getHumidity']);
+
 Route::get('/weather/daily', [WeatherController::class, 'getCurrentWeather']);
 Route::get('/weather/weekly', [WeatherController::class, 'getWeeklyWeather']);
+Route::get('/weather/checkIfExtremeWeather', [WeatherController::class, 'checkIfExtremeWeather']);

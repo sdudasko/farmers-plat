@@ -8,13 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWecG8VcP/OD1sIzS7bZ9FqPNiF9i5MRvUUjBzBJvRtGFgjaVZvdzJ5ZwDvV" crossorigin="anonymous">
 
     <style>
-        .forecast-table {
-            width: 100%;
-            text-align: center;
-        }
-        .forecast-table th, .forecast-table td {
-            padding: 10px;
-        }
         .forecast-icon {
             width: 50px;
             height: auto;
@@ -70,10 +63,10 @@
             
                     <!-- Forecast Toggles -->
                     <div class="flex items-center space-x-4">
-                        <button id="daily-btn" class="text-sm px-4 py-2 leading-5 text-blue-700 transition-colors duration-150 border border-blue-700 rounded-lg focus:shadow-outline hover:bg-blue-700 hover:text-white">
+                        <button id="daily-btn" class="text-sm px-4 py-2 leading-5  transition-colors duration-150 border border-blue-700 rounded-lg focus:shadow-outline hover:bg-blue-700 hover:text-white">
                         Daily Forecast
                         </button>
-                        <button id="weekly-btn" class="text-sm px-4 py-2 leading-5 text-blue-700 transition-colors duration-150 border border-blue-700 rounded-lg focus:shadow-outline hover:bg-blue-700 hover:text-white">
+                        <button id="weekly-btn" class="text-sm px-4 py-2 leading-5  transition-colors duration-150 border border-blue-700 rounded-lg focus:shadow-outline hover:bg-blue-700 hover:text-white">
                         Weekly Forecast
                         </button>
                     </div>
@@ -116,7 +109,7 @@
                 <!-- Weekly Forecast Section -->
                 <div id="weekly-forecast" class="bg-white shadow-lg rounded-lg p-6">
                     <div class="overflow-x-auto mt-6">
-                        <table class="forecast-table min-w-full bg-white">
+                        <table class="forecast-table  bg-white">
                             <thead>
                                 <tr>
                                     <th>Date</th>
